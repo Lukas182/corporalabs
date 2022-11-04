@@ -20,6 +20,7 @@ class CharacterListPresenter  {
 extension CharacterListPresenter: CharacterListPresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
+        
     }
 }
 

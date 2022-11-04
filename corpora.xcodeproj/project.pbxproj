@@ -16,6 +16,14 @@
 		0FF2225429159BBB009F93B6 /* corporaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2225329159BBB009F93B6 /* corporaTests.swift */; };
 		0FF2225E29159BBB009F93B6 /* corporaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2225D29159BBB009F93B6 /* corporaUITests.swift */; };
 		0FF2226029159BBB009F93B6 /* corporaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2225F29159BBB009F93B6 /* corporaUITestsLaunchTests.swift */; };
+		0FF2227329159C24009F93B6 /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2226C29159C24009F93B6 /* CharacterListPresenter.swift */; };
+		0FF2227429159C24009F93B6 /* CharacterListLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2226D29159C24009F93B6 /* CharacterListLocalDataManager.swift */; };
+		0FF2227529159C24009F93B6 /* CharacterListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2226E29159C24009F93B6 /* CharacterListProtocols.swift */; };
+		0FF2227629159C24009F93B6 /* CharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2226F29159C24009F93B6 /* CharacterListInteractor.swift */; };
+		0FF2227729159C24009F93B6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2227029159C24009F93B6 /* CharacterListView.swift */; };
+		0FF2227829159C24009F93B6 /* CharacterListRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2227129159C24009F93B6 /* CharacterListRemoteDataManager.swift */; };
+		0FF2227929159C24009F93B6 /* CharacterListWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2227229159C24009F93B6 /* CharacterListWireFrame.swift */; };
+		0FF2227C29159C4E009F93B6 /* CharacterListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		0FF2225929159BBB009F93B6 /* corporaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = corporaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF2225D29159BBB009F93B6 /* corporaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = corporaUITests.swift; sourceTree = "<group>"; };
 		0FF2225F29159BBB009F93B6 /* corporaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = corporaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0FF2226C29159C24009F93B6 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
+		0FF2226D29159C24009F93B6 /* CharacterListLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListLocalDataManager.swift; sourceTree = "<group>"; };
+		0FF2226E29159C24009F93B6 /* CharacterListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListProtocols.swift; sourceTree = "<group>"; };
+		0FF2226F29159C24009F93B6 /* CharacterListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractor.swift; sourceTree = "<group>"; };
+		0FF2227029159C24009F93B6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
+		0FF2227129159C24009F93B6 /* CharacterListRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListRemoteDataManager.swift; sourceTree = "<group>"; };
+		0FF2227229159C24009F93B6 /* CharacterListWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListWireFrame.swift; sourceTree = "<group>"; };
+		0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharacterListView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +122,7 @@
 				0FF2224529159BBB009F93B6 /* Assets.xcassets */,
 				0FF2224729159BBB009F93B6 /* LaunchScreen.storyboard */,
 				0FF2224A29159BBB009F93B6 /* Info.plist */,
+				0FF2227A29159C2F009F93B6 /* CharacterList */,
 			);
 			path = corpora;
 			sourceTree = "<group>";
@@ -125,6 +142,21 @@
 				0FF2225F29159BBB009F93B6 /* corporaUITestsLaunchTests.swift */,
 			);
 			path = corporaUITests;
+			sourceTree = "<group>";
+		};
+		0FF2227A29159C2F009F93B6 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				0FF2226C29159C24009F93B6 /* CharacterListPresenter.swift */,
+				0FF2226D29159C24009F93B6 /* CharacterListLocalDataManager.swift */,
+				0FF2226E29159C24009F93B6 /* CharacterListProtocols.swift */,
+				0FF2226F29159C24009F93B6 /* CharacterListInteractor.swift */,
+				0FF2227029159C24009F93B6 /* CharacterListView.swift */,
+				0FF2227129159C24009F93B6 /* CharacterListRemoteDataManager.swift */,
+				0FF2227229159C24009F93B6 /* CharacterListWireFrame.swift */,
+				0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */,
+			);
+			path = CharacterList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF2227C29159C4E009F93B6 /* CharacterListView.storyboard in Resources */,
 				0FF2224929159BBB009F93B6 /* LaunchScreen.storyboard in Resources */,
 				0FF2224629159BBB009F93B6 /* Assets.xcassets in Resources */,
 				0FF2224429159BB9009F93B6 /* Main.storyboard in Resources */,
@@ -258,8 +291,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF2227329159C24009F93B6 /* CharacterListPresenter.swift in Sources */,
+				0FF2227829159C24009F93B6 /* CharacterListRemoteDataManager.swift in Sources */,
+				0FF2227629159C24009F93B6 /* CharacterListInteractor.swift in Sources */,
+				0FF2227529159C24009F93B6 /* CharacterListProtocols.swift in Sources */,
 				0FF2224129159BB9009F93B6 /* ViewController.swift in Sources */,
 				0FF2223D29159BB9009F93B6 /* AppDelegate.swift in Sources */,
+				0FF2227429159C24009F93B6 /* CharacterListLocalDataManager.swift in Sources */,
+				0FF2227729159C24009F93B6 /* CharacterListView.swift in Sources */,
+				0FF2227929159C24009F93B6 /* CharacterListWireFrame.swift in Sources */,
 				0FF2223F29159BB9009F93B6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

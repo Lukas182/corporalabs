@@ -12,6 +12,10 @@ import UIKit
 protocol CharacterListViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: CharacterListPresenterProtocol? { get set }
+    
+    func setupCollection()
+    func updateData(characters: [Result])
+    func showError(error: Error)
 }
 
 protocol CharacterListWireFrameProtocol: AnyObject {
@@ -26,10 +30,15 @@ protocol CharacterListPresenterProtocol: AnyObject {
     var wireFrame: CharacterListWireFrameProtocol? { get set }
     
     func viewDidLoad()
+    func getCharacterCount() -> Int
+    func getCharactersForIndexPath(index: Int) -> Result
 }
 
 protocol CharacterListInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
+    
+    func fetchedCharactersSuccess(characters: CharacterResponse)
+    func fetchedCharactersFailure(error: Error)
 }
 
 protocol CharacterListInteractorInputProtocol: AnyObject {
@@ -37,6 +46,8 @@ protocol CharacterListInteractorInputProtocol: AnyObject {
     var presenter: CharacterListInteractorOutputProtocol? { get set }
     var localDatamanager: CharacterListLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CharacterListRemoteDataManagerInputProtocol? { get set }
+    
+    func fetchCharacters()
 }
 
 protocol CharacterListDataManagerInputProtocol: AnyObject {
@@ -46,10 +57,14 @@ protocol CharacterListDataManagerInputProtocol: AnyObject {
 protocol CharacterListRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol? { get set }
+    
+    func fetchCharactersFromService()
 }
 
 protocol CharacterListRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
+    
+    func fetchedCharacters(apiResponse : Swift.Result<CharacterResponse, Error>)
 }
 
 protocol CharacterListLocalDataManagerInputProtocol: AnyObject {

@@ -26,6 +26,10 @@
 		0FF2227C29159C4E009F93B6 /* CharacterListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */; };
 		0FF2227E2915A874009F93B6 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2227D2915A874009F93B6 /* CharacterService.swift */; };
 		0FF222812915AC08009F93B6 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF222802915AC08009F93B6 /* Character.swift */; };
+		0FF2228429166AB7009F93B6 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2228329166AB7009F93B6 /* CustomError.swift */; };
+		0FF2228729166D28009F93B6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2228629166D28009F93B6 /* Reachability.swift */; };
+		0FF2228929166D73009F93B6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2228829166D73009F93B6 /* Endpoint.swift */; };
+		0FF2228B291670ED009F93B6 /* CharacterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2228A291670ED009F93B6 /* CharacterListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharacterListView.storyboard; sourceTree = "<group>"; };
 		0FF2227D2915A874009F93B6 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		0FF222802915AC08009F93B6 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		0FF2228329166AB7009F93B6 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		0FF2228629166D28009F93B6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0FF2228829166D73009F93B6 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		0FF2228A291670ED009F93B6 /* CharacterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 		0FF2223B29159BB9009F93B6 /* corpora */ = {
 			isa = PBXGroup;
 			children = (
+				0FF2228529166ADE009F93B6 /* Utils */,
 				0FF222822915AC0C009F93B6 /* Models */,
 				0FF2227F2915A879009F93B6 /* Services */,
 				0FF2223C29159BB9009F93B6 /* AppDelegate.swift */,
@@ -161,6 +170,7 @@
 				0FF2227129159C24009F93B6 /* CharacterListRemoteDataManager.swift */,
 				0FF2227229159C24009F93B6 /* CharacterListWireFrame.swift */,
 				0FF2227B29159C4E009F93B6 /* CharacterListView.storyboard */,
+				0FF2228C291670F3009F93B6 /* Cells */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -169,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0FF2227D2915A874009F93B6 /* CharacterService.swift */,
+				0FF2228829166D73009F93B6 /* Endpoint.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -179,6 +190,23 @@
 				0FF222802915AC08009F93B6 /* Character.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0FF2228529166ADE009F93B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0FF2228329166AB7009F93B6 /* CustomError.swift */,
+				0FF2228629166D28009F93B6 /* Reachability.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0FF2228C291670F3009F93B6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0FF2228A291670ED009F93B6 /* CharacterListCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,14 +341,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF2228729166D28009F93B6 /* Reachability.swift in Sources */,
 				0FF2227329159C24009F93B6 /* CharacterListPresenter.swift in Sources */,
 				0FF2227829159C24009F93B6 /* CharacterListRemoteDataManager.swift in Sources */,
+				0FF2228429166AB7009F93B6 /* CustomError.swift in Sources */,
+				0FF2228929166D73009F93B6 /* Endpoint.swift in Sources */,
 				0FF2227629159C24009F93B6 /* CharacterListInteractor.swift in Sources */,
 				0FF222812915AC08009F93B6 /* Character.swift in Sources */,
 				0FF2227529159C24009F93B6 /* CharacterListProtocols.swift in Sources */,
 				0FF2224129159BB9009F93B6 /* ViewController.swift in Sources */,
 				0FF2223D29159BB9009F93B6 /* AppDelegate.swift in Sources */,
 				0FF2227E2915A874009F93B6 /* CharacterService.swift in Sources */,
+				0FF2228B291670ED009F93B6 /* CharacterListCell.swift in Sources */,
 				0FF2227429159C24009F93B6 /* CharacterListLocalDataManager.swift in Sources */,
 				0FF2227729159C24009F93B6 /* CharacterListView.swift in Sources */,
 				0FF2227929159C24009F93B6 /* CharacterListWireFrame.swift in Sources */,

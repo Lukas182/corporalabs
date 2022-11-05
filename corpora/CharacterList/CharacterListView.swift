@@ -22,12 +22,13 @@ class CharacterListView: UIViewController {
         
         presenter?.viewDidLoad()
         
-        setupCollection()
     }
+}
+
+extension CharacterListView: CharacterListViewProtocol {
+    
     
     func setupCollection(){
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -39,11 +40,20 @@ class CharacterListView: UIViewController {
         
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
-}
-
-extension CharacterListView: CharacterListViewProtocol {
     
-    // TODO: implement view output methods
+    func updateData(characters: [Result]) {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func showError(error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Something Went Wrong :(", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     
 }
 
@@ -70,11 +80,20 @@ extension CharacterListView: UICollectionViewDelegateFlowLayout {
 extension CharacterListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        
+        if let count = self.presenter?.getCharacterCount() {
+            return count
+        }
+        
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CharacterListCell
+        
+        cell.backgroundColor = UIColor.lightGray
+        cell.name.text = self.presenter?.getCharactersForIndexPath(index: indexPath.row).name
+        
         return cell
     }
     

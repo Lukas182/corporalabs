@@ -41,7 +41,7 @@ extension CharacterListView: CharacterListViewProtocol {
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
-    func updateData(characters: [Result]) {
+    func updateData() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
@@ -97,6 +97,9 @@ extension CharacterListView: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.presenter?.viewNeedMoreCharacters(indexPath: indexPath.row)
+    }
     
 }
 

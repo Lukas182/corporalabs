@@ -17,6 +17,13 @@ struct Info: Codable {
     let count, pages: Int
     let next: String?
     let prev: String?
+
+    init(){
+        count = 0
+        pages = 0
+        next = ""
+        prev = ""
+    }
 }
 
 // MARK: - Result

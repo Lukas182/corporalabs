@@ -14,7 +14,7 @@ protocol CharacterListViewProtocol: AnyObject {
     var presenter: CharacterListPresenterProtocol? { get set }
     
     func setupCollection()
-    func updateData(characters: [Result])
+    func updateData()
     func showError(error: Error)
 }
 
@@ -29,7 +29,13 @@ protocol CharacterListPresenterProtocol: AnyObject {
     var interactor: CharacterListInteractorInputProtocol? { get set }
     var wireFrame: CharacterListWireFrameProtocol? { get set }
     
+    // Update UI
+    
     func viewDidLoad()
+    func viewNeedMoreCharacters(indexPath: Int)
+    
+    // Accesors func
+    
     func getCharacterCount() -> Int
     func getCharactersForIndexPath(index: Int) -> Result
 }
@@ -37,7 +43,7 @@ protocol CharacterListPresenterProtocol: AnyObject {
 protocol CharacterListInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
     
-    func fetchedCharactersSuccess(characters: CharacterResponse)
+    func fetchedCharactersSuccess(characters: CharacterResponse,newPage: Bool)
     func fetchedCharactersFailure(error: Error)
 }
 
@@ -47,7 +53,7 @@ protocol CharacterListInteractorInputProtocol: AnyObject {
     var localDatamanager: CharacterListLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CharacterListRemoteDataManagerInputProtocol? { get set }
     
-    func fetchCharacters()
+    func fetchCharacters(next : String?)
 }
 
 protocol CharacterListDataManagerInputProtocol: AnyObject {
@@ -58,13 +64,13 @@ protocol CharacterListRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol? { get set }
     
-    func fetchCharactersFromService()
+    func fetchCharactersFromService(next: String?)
 }
 
 protocol CharacterListRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
     
-    func fetchedCharacters(apiResponse : Swift.Result<CharacterResponse, Error>)
+    func fetchedCharacters(apiResponse : Swift.Result<CharacterResponse, Error>,newPage: Bool)
 }
 
 protocol CharacterListLocalDataManagerInputProtocol: AnyObject {

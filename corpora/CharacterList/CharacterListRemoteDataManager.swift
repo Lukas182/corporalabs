@@ -9,15 +9,14 @@
 import Foundation
 
 class CharacterListRemoteDataManager:CharacterListRemoteDataManagerInputProtocol {
-    
-    
+
     var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol?
     
-    func fetchCharactersFromService() {
+    func fetchCharactersFromService(next: String?) {
         
         let service = NativeURLSessionNetworkService()
-        NetWorkManager.init(wbs: service).apiCall_GetCharacters { result in
-            self.remoteRequestHandler?.fetchedCharacters(apiResponse: result)
+        NetWorkManager.init(wbs: service).apiCall_GetCharacters(next: next) { result in
+            self.remoteRequestHandler?.fetchedCharacters(apiResponse: result,newPage: next != nil ? true : false)
         }
         
     }

@@ -8,21 +8,23 @@
 import Foundation
 
 protocol NetWorkServiceProtocol {
-    func getCharacters(completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void )
+    func getCharacters(next: String? ,completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void )
 }
 
 class NativeURLSessionNetworkService : NetWorkServiceProtocol {
     
-    func getCharacters(completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
+    func getCharacters(next: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
         
         guard Reachability.isConnectedToNetwork(),
-            let url = URL(string: EndPoint.characters.url) else {
+              let url = (next != nil ? URL(string:next!) : URL(string: EndPoint.characters.url)) else {
                 completion(.failure(CustomError.noConnection))
                 return
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        
+        print(request)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -65,8 +67,8 @@ class NetWorkManager {
         self.webservice = wbs
     }
     
-    func apiCall_GetCharacters(completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
-        return self.webservice.getCharacters { result in
+    func apiCall_GetCharacters(next: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
+        return self.webservice.getCharacters(next: next) { result in
             completion(result)
         }
     }

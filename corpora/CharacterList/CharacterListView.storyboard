@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F9u-YX-4Kl">
-                                <rect key="frame" x="0.0" y="50" width="414" height="812"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="l5M-m6-3AH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -36,6 +36,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-dC-NCB">
                                                     <rect key="frame" x="39" y="8" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="M39-aL-bUc"/>
+                                                        <constraint firstAttribute="height" constant="50" id="aeF-1Q-aBB"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planeta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piu-Ek-C79">
                                                     <rect key="frame" x="0.0" y="83" width="128" height="14"/>
@@ -88,7 +92,7 @@
                                         <connections>
                                             <outlet property="img" destination="Uw0-dC-NCB" id="l2s-H8-Goz"/>
                                             <outlet property="name" destination="OAU-gm-dw7" id="dme-ri-4xD"/>
-                                            <outlet property="origin" destination="OAU-gm-dw7" id="i2L-rC-Y1a"/>
+                                            <outlet property="origin" destination="piu-Ek-C79" id="YUA-Y5-Kc0"/>
                                             <outlet property="status" destination="Qp3-S3-LZ6" id="DZO-lH-dy9"/>
                                         </connections>
                                     </collectionViewCell>
@@ -98,19 +102,70 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="XhN-Ia-1zp"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XjJ-3u-9LQ" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="0.0" y="110" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oSH-Qz-BFe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" systemColor="systemPinkColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                        <color key="value" systemColor="systemBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                        <color key="value" systemColor="systemBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                        <color key="value" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="labelColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                                        <color key="value" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Dt1-UG-iiF"/>
-                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="50" id="Vrr-Hf-HQ1"/>
-                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="afL-IU-UKS"/>
-                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="pHf-pQ-gYt"/>
+                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5po-Hf-qGS"/>
+                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="CFv-YH-79b"/>
+                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Lqp-A1-Ybe"/>
+                            <constraint firstItem="XjJ-3u-9LQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="QNy-Hg-eYo"/>
+                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="top" secondItem="XjJ-3u-9LQ" secondAttribute="bottom" id="Unh-IG-7ax"/>
+                            <constraint firstItem="XjJ-3u-9LQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eY2-0U-4mM"/>
+                            <constraint firstItem="XjJ-3u-9LQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hBQ-6V-l08"/>
+                            <constraint firstItem="XjJ-3u-9LQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="110" id="uoz-aB-ChX"/>
+                            <constraint firstItem="F9u-YX-4Kl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yAD-Eb-KIY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o48-AA-kDG"/>
                     <connections>
                         <outlet property="collectionView" destination="F9u-YX-4Kl" id="ERU-dT-Af2"/>
+                        <outlet property="filterView" destination="XjJ-3u-9LQ" id="fi4-rh-0jq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,8 +192,17 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

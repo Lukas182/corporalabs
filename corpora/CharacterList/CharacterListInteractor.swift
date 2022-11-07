@@ -15,8 +15,8 @@ class CharacterListInteractor: CharacterListInteractorInputProtocol {
     var localDatamanager: CharacterListLocalDataManagerInputProtocol?
     var remoteDatamanager: CharacterListRemoteDataManagerInputProtocol?
     
-    func fetchCharacters(next: String?) {
-        remoteDatamanager?.fetchCharactersFromService(next: next)
+    func fetchCharacters(next: String?,filter: String?, query: String?) {
+        remoteDatamanager?.fetchCharactersFromService(next: next,filter: filter, query: query)
     }
 }
 

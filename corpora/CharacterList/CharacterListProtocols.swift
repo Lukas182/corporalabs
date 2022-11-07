@@ -14,8 +14,10 @@ protocol CharacterListViewProtocol: AnyObject {
     var presenter: CharacterListPresenterProtocol? { get set }
     
     func setupCollection()
+    func setupFilters()
     func updateData()
     func showError(error: Error)
+    func updateFilters(filterApplied: String)
 }
 
 protocol CharacterListWireFrameProtocol: AnyObject {
@@ -33,6 +35,7 @@ protocol CharacterListPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func viewNeedMoreCharacters(indexPath: Int)
+    func viewChangedFilter(tag: String)
     
     // Accesors func
     
@@ -53,7 +56,7 @@ protocol CharacterListInteractorInputProtocol: AnyObject {
     var localDatamanager: CharacterListLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CharacterListRemoteDataManagerInputProtocol? { get set }
     
-    func fetchCharacters(next : String?)
+    func fetchCharacters(next: String?,filter: String?, query: String?)
 }
 
 protocol CharacterListDataManagerInputProtocol: AnyObject {
@@ -64,7 +67,7 @@ protocol CharacterListRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol? { get set }
     
-    func fetchCharactersFromService(next: String?)
+    func fetchCharactersFromService(next: String?,filter: String?,query: String?)
 }
 
 protocol CharacterListRemoteDataManagerOutputProtocol: AnyObject {

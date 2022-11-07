@@ -8,23 +8,26 @@
 import Foundation
 
 protocol NetWorkServiceProtocol {
-    func getCharacters(next: String? ,completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void )
+    func getCharacters(next: String? , filter: String?, query: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void )
 }
 
 class NativeURLSessionNetworkService : NetWorkServiceProtocol {
     
-    func getCharacters(next: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
+    func getCharacters(next: String? , filter: String?, query: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void ) {
         
-        guard Reachability.isConnectedToNetwork(),
-              let url = (next != nil ? URL(string:next!) : URL(string: EndPoint.characters.url)) else {
-                completion(.failure(CustomError.noConnection))
-                return
+        var url = next != nil ? next! : EndPoint.characters.url
+        
+        if let _query = query,let _filter = filter {
+            url = url.appending("?").appending(_query).appending("=").appending(_filter)
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        guard Reachability.isConnectedToNetwork() else {
+            completion(.failure(CustomError.noConnection))
+            return
+        }
         
-        print(request)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -67,8 +70,8 @@ class NetWorkManager {
         self.webservice = wbs
     }
     
-    func apiCall_GetCharacters(next: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
-        return self.webservice.getCharacters(next: next) { result in
+    func apiCall_GetCharacters(next: String?, filter: String?, query: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void) {
+        return self.webservice.getCharacters(next: next, filter: filter, query: query) { result in
             completion(result)
         }
     }

@@ -12,6 +12,7 @@ class CharacterListPresenter  {
     
     var info = Info()
     var characters = [Result]()
+    var tagFiltering = ""
     
     // MARK: Properties
     weak var view: CharacterListViewProtocol?
@@ -21,13 +22,16 @@ class CharacterListPresenter  {
 }
 
 extension CharacterListPresenter: CharacterListPresenterProtocol {
+
     
+    // Presenter methods
     
-    // TODO: implement presenter methods
     func viewDidLoad() {
 
         view?.setupCollection()
-        interactor?.fetchCharacters(next: nil)
+        view?.setupFilters()
+        
+        interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
         
     }
     
@@ -37,11 +41,32 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
         if(count != 0)
         {
             if (indexPath == count - 1 ) {
-                interactor?.fetchCharacters(next: info.next)
+                interactor?.fetchCharacters(next: info.next,filter: nil,query: nil)
             }
         }
         
     }
+    
+    func viewChangedFilter(tag: String) {
+        
+        tagFiltering = tagFiltering == tag ? "" : tag
+        
+        self.view?.updateFilters(filterApplied: tagFiltering)
+        switch tagFiltering
+        {
+            case "Vivo": interactor?.fetchCharacters(next: nil,filter: "alive",query: "status")
+            break
+            case "Muerto": interactor?.fetchCharacters(next: nil,filter: "dead",query: "status")
+            break
+            case "Desconocido": interactor?.fetchCharacters(next: nil,filter: "unknown",query: "status")
+            break
+            case "Cualquiera": interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
+            break
+            default: interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
+        }
+    }
+    
+    // Getters from View
     
     func getCharacterCount() -> Int {
         return self.characters.count
@@ -71,7 +96,5 @@ extension CharacterListPresenter: CharacterListInteractorOutputProtocol {
     func fetchedCharactersFailure(error: Error) {
         self.view?.showError(error: error)
     }
-    
-    
     
 }

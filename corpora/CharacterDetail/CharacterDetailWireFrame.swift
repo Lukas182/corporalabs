@@ -11,9 +11,9 @@ import UIKit
 
 class CharacterDetailWireFrame: CharacterDetailWireFrameProtocol {
 
-    class func createCharacterDetailModule() -> UIViewController {
-        let navController = mainStoryboard.instantiateViewController(withIdentifier: "CharacterDetailView")
-        if let view = navController.children.first as? CharacterDetailView {
+    class func createCharacterDetailModule(character: Result) -> UIViewController {
+        let detailView = mainStoryboard.instantiateViewController(withIdentifier: "CharacterDetailView")
+        if let view = detailView as? CharacterDetailView {
             let presenter: CharacterDetailPresenterProtocol & CharacterDetailInteractorOutputProtocol = CharacterDetailPresenter()
             let interactor: CharacterDetailInteractorInputProtocol & CharacterDetailRemoteDataManagerOutputProtocol = CharacterDetailInteractor()
             let localDataManager: CharacterDetailLocalDataManagerInputProtocol = CharacterDetailLocalDataManager()
@@ -24,12 +24,13 @@ class CharacterDetailWireFrame: CharacterDetailWireFrameProtocol {
             presenter.view = view
             presenter.wireFrame = wireFrame
             presenter.interactor = interactor
+            presenter.character = character
             interactor.presenter = presenter
             interactor.localDatamanager = localDataManager
             interactor.remoteDatamanager = remoteDataManager
             remoteDataManager.remoteRequestHandler = interactor
             
-            return navController
+            return detailView
         }
         return UIViewController()
     }

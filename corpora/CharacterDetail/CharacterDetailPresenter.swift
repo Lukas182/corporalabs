@@ -8,19 +8,28 @@
 
 import Foundation
 
-class CharacterDetailPresenter  {
+struct Section {
+    var title: String
+    var episodes: [Episode]
+}
+
+class CharacterDetailPresenter : CharacterDetailPresenterProtocol {
     
     // MARK: Properties
     weak var view: CharacterDetailViewProtocol?
     var interactor: CharacterDetailInteractorInputProtocol?
     var wireFrame: CharacterDetailWireFrameProtocol?
+    var character: Result?
+    var sections: [Section]?
     
-}
-
-extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
+        
+        if let _character = character {
+            view?.setupView(title: _character.name)
+        }
     }
+    
 }
 
 extension CharacterDetailPresenter: CharacterDetailInteractorOutputProtocol {

@@ -9,49 +9,52 @@
 import Foundation
 import UIKit
 
-protocol CharacterDetailViewProtocol: class {
+protocol CharacterDetailViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: CharacterDetailPresenterProtocol? { get set }
+    
+    func setupView(title: String)
 }
 
-protocol CharacterDetailWireFrameProtocol: class {
+protocol CharacterDetailWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createCharacterDetailModule() -> UIViewController
+    static func createCharacterDetailModule(character: Result) -> UIViewController
 }
 
-protocol CharacterDetailPresenterProtocol: class {
+protocol CharacterDetailPresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var view: CharacterDetailViewProtocol? { get set }
     var interactor: CharacterDetailInteractorInputProtocol? { get set }
     var wireFrame: CharacterDetailWireFrameProtocol? { get set }
+    var character: Result? { get set }
     
     func viewDidLoad()
 }
 
-protocol CharacterDetailInteractorOutputProtocol: class {
+protocol CharacterDetailInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
 }
 
-protocol CharacterDetailInteractorInputProtocol: class {
+protocol CharacterDetailInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: CharacterDetailInteractorOutputProtocol? { get set }
     var localDatamanager: CharacterDetailLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CharacterDetailRemoteDataManagerInputProtocol? { get set }
 }
 
-protocol CharacterDetailDataManagerInputProtocol: class {
+protocol CharacterDetailDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> DATAMANAGER
 }
 
-protocol CharacterDetailRemoteDataManagerInputProtocol: class {
+protocol CharacterDetailRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CharacterDetailRemoteDataManagerOutputProtocol? { get set }
 }
 
-protocol CharacterDetailRemoteDataManagerOutputProtocol: class {
+protocol CharacterDetailRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
 }
 
-protocol CharacterDetailLocalDataManagerInputProtocol: class {
+protocol CharacterDetailLocalDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> LOCALDATAMANAGER
 }

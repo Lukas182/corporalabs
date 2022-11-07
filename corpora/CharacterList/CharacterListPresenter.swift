@@ -22,7 +22,6 @@ class CharacterListPresenter  {
 }
 
 extension CharacterListPresenter: CharacterListPresenterProtocol {
-
     
     // Presenter methods
     
@@ -64,6 +63,10 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
             break
             default: interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
         }
+    }
+    
+    func viewDidSelectedCharacter(index: Int) {
+        self.wireFrame?.showDetail(fromView: view!, character: self.characters[index])
     }
     
     // Getters from View

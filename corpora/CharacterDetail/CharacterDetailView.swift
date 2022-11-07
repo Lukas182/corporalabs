@@ -18,9 +18,15 @@ class CharacterDetailView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.presenter?.viewDidLoad()
     }
 }
 
 extension CharacterDetailView: CharacterDetailViewProtocol {
-    // TODO: implement view output methods
+   
+    func setupView(title: String) {
+        self.title = title
+    }
+    
 }

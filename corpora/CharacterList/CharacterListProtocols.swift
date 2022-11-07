@@ -23,6 +23,8 @@ protocol CharacterListViewProtocol: AnyObject {
 protocol CharacterListWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createCharacterListModule() -> UIViewController
+        
+    func showDetail(fromView: CharacterListViewProtocol, character: Result)
 }
 
 protocol CharacterListPresenterProtocol: AnyObject {
@@ -36,6 +38,7 @@ protocol CharacterListPresenterProtocol: AnyObject {
     func viewDidLoad()
     func viewNeedMoreCharacters(indexPath: Int)
     func viewChangedFilter(tag: String)
+    func viewDidSelectedCharacter(index: Int)
     
     // Accesors func
     

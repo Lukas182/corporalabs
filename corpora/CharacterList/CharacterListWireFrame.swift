@@ -38,4 +38,14 @@ class CharacterListWireFrame: CharacterListWireFrameProtocol {
         return UIStoryboard(name: "CharacterListView", bundle: Bundle.main)
     }
     
+    func showDetail(fromView: CharacterListViewProtocol, character: Result) {
+        
+        let detailView = CharacterDetailWireFrame.createCharacterDetailModule(character: character)
+        
+        if let sourceView = fromView as? UIViewController {
+            sourceView.navigationController?.pushViewController(detailView, animated: true)
+        }
+        
+    }
+    
 }

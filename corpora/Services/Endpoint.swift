@@ -19,16 +19,19 @@ enum ApiURL {
 
 enum EndPoint {
     case characters
+    case episode
     
     var path : String {
         switch self {
         case .characters:  return "character"
+        case .episode: return "episode"
         }
     }
     
     var url: String {
         switch self {
         case .characters: return "\(ApiURL.base.baseURL)\(path)"
+        case .episode: return "\(ApiURL.base.baseURL)\(path)"
         }
     }
 }

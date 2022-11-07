@@ -13,6 +13,8 @@ class CharacterDetailView: UIViewController {
 
     // MARK: Properties
     var presenter: CharacterDetailPresenterProtocol?
+    @IBOutlet weak var tableView: UITableView!
+    
 
     // MARK: Lifecycle
 
@@ -24,9 +26,56 @@ class CharacterDetailView: UIViewController {
 }
 
 extension CharacterDetailView: CharacterDetailViewProtocol {
-   
+    
     func setupView(title: String) {
         self.title = title
     }
     
+    func updateData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func showError(error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Something Went Wrong :(", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+extension CharacterDetailView: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return (self.presenter?.getSectionsCount())!
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.presenter?.getEpisodeCountInSection(index: section))!
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (self.presenter?.getSection(index: section))?.season
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EpisodeCell
+        cell.ConfigureCell(model:  (self.presenter?.getEpisodeInSection(section: indexPath.section, index: indexPath.row))!)
+        return cell
+    }
+
+}
+
+extension CharacterDetailView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 73
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
 }

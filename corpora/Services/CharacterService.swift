@@ -136,8 +136,8 @@ class NetWorkManager {
                         semaphore.signal()
                         break
                     case .failure(let error):
-                        print(error)
                         semaphore.signal()
+                        completion(.failure(error))
                     }
                 }
                 semaphore.wait()

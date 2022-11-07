@@ -39,6 +39,7 @@
 		0FF2229C2919146B009F93B6 /* CharacterDetailWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF222952919146B009F93B6 /* CharacterDetailWireFrame.swift */; };
 		0FF2229F2919182C009F93B6 /* CharacterDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF2229E2919182C009F93B6 /* CharacterDetailView.storyboard */; };
 		0FF222A12919251A009F93B6 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF222A02919251A009F93B6 /* Episode.swift */; };
+		0FF222A3291988C2009F93B6 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF222A2291988C2009F93B6 /* EpisodeCell.swift */; };
 		52C5C5A215DB008D3595EA2E /* Pods_corpora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BF3FD4532BA5BF24BD6392 /* Pods_corpora.framework */; };
 		E4806DCD4555DCD195A42BCF /* Pods_corporaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AFABE89966F32A46ACBD19 /* Pods_corporaTests.framework */; };
 		E70C707AC67F7E75F47F8F79 /* Pods_corpora_corporaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EBDBA8F6487A305F5A3ED7 /* Pods_corpora_corporaUITests.framework */; };
@@ -98,6 +99,7 @@
 		0FF222952919146B009F93B6 /* CharacterDetailWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailWireFrame.swift; sourceTree = "<group>"; };
 		0FF2229E2919182C009F93B6 /* CharacterDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharacterDetailView.storyboard; sourceTree = "<group>"; };
 		0FF222A02919251A009F93B6 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		0FF222A2291988C2009F93B6 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		12AFABE89966F32A46ACBD19 /* Pods_corporaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_corporaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		159F2A8DC40DCFE5C39BC199 /* Pods-corpora-corporaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-corpora-corporaUITests.release.xcconfig"; path = "Target Support Files/Pods-corpora-corporaUITests/Pods-corpora-corporaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		32A7E57996728B7B7E013536 /* Pods-corporaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-corporaTests.debug.xcconfig"; path = "Target Support Files/Pods-corporaTests/Pods-corporaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,8 +259,17 @@
 				0FF222942919146B009F93B6 /* CharacterDetailRemoteDataManager.swift */,
 				0FF222952919146B009F93B6 /* CharacterDetailWireFrame.swift */,
 				0FF2229E2919182C009F93B6 /* CharacterDetailView.storyboard */,
+				0FF222A4291988C9009F93B6 /* Cells */,
 			);
 			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		0FF222A4291988C9009F93B6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0FF222A2291988C2009F93B6 /* EpisodeCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		265A6A47AAC86A8F87633E6B /* Frameworks */ = {
@@ -543,6 +554,7 @@
 				0FF2224129159BB9009F93B6 /* ViewController.swift in Sources */,
 				0FF2223D29159BB9009F93B6 /* AppDelegate.swift in Sources */,
 				0FF2227E2915A874009F93B6 /* CharacterService.swift in Sources */,
+				0FF222A3291988C2009F93B6 /* EpisodeCell.swift in Sources */,
 				0FF2229B2919146B009F93B6 /* CharacterDetailRemoteDataManager.swift in Sources */,
 				0FF2228B291670ED009F93B6 /* CharacterListCell.swift in Sources */,
 				0FF222962919146B009F93B6 /* CharacterDetailPresenter.swift in Sources */,

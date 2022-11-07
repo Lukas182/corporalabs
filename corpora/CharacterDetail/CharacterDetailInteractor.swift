@@ -26,6 +26,18 @@ class CharacterDetailInteractor: CharacterDetailInteractorInputProtocol {
     func fetchEpisodesData(episodes: [String]) {
         self.remoteDatamanager?.fetchEpisodiesFromService(episodes: episodes)
     }
+    
+    func changeFormatDate(date: String) -> String{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM dd, yyyy"
+        let _date = dateFormatter.date(from: date)
+        let localFormatter = DateFormatter()
+        localFormatter.dateStyle = .long
+        localFormatter.locale = .init(identifier: "es_ES")
+        let outputDate = localFormatter.string(from: _date!)
+        return outputDate
+    }
 }
 
 extension CharacterDetailInteractor: CharacterDetailRemoteDataManagerOutputProtocol {
@@ -36,8 +48,11 @@ extension CharacterDetailInteractor: CharacterDetailRemoteDataManagerOutputProto
             self.episodes = episodes
             
             if let _episodes = self.episodes {
-                for epi in _episodes {
+                for var epi in _episodes {
+                    
                     let prefix = epi.episode.prefix(3)
+                    
+                    epi.airDate = self.changeFormatDate(date: epi.airDate)
                     
                     if( self.sections.enumerated().filter({ $0.element.season == prefix }).map({ $0.offset }).count > 0) {
                         if let index = self.sections.enumerated().filter({ $0.element.season == prefix }).map({ $0.offset }).last {

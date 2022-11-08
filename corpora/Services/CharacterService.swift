@@ -16,14 +16,12 @@ class NativeURLSessionNetworkService : NetWorkServiceProtocol {
     
     func getEpisode(url: String, completion: @escaping (Swift.Result<Episode, Error>) -> Void) {
         
-        let _url = url
-        
         guard Reachability.isConnectedToNetwork() else {
             completion(.failure(CustomError.noConnection))
             return
         }
         
-        var request = URLRequest(url: URL(string: _url)!)
+        var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in

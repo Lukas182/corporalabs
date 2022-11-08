@@ -43,13 +43,13 @@ protocol CharacterListPresenterProtocol: AnyObject {
     // Accesors func
     
     func getCharacterCount() -> Int
-    func getCharactersForIndexPath(index: Int) -> Result
+    func getCharactersForIndexPath(index: Int) -> Result?
 }
 
 protocol CharacterListInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
     
-    func fetchedCharactersSuccess(characters: CharacterResponse,newPage: Bool)
+    func fetchedCharactersSuccess(newPage: Bool)
     func fetchedCharactersFailure(error: Error)
 }
 
@@ -59,7 +59,13 @@ protocol CharacterListInteractorInputProtocol: AnyObject {
     var localDatamanager: CharacterListLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CharacterListRemoteDataManagerInputProtocol? { get set }
     
-    func fetchCharacters(next: String?,filter: String?, query: String?)
+    var info : Info? { get set }
+    var characters : [Result] { get set }
+    var tagFiltering : String { get set }
+    
+    func fetchCharacters(next: Bool?,filter: String?, query: String?)
+    func loadMoreCharacters(index : Int)
+    func filteringCharacters(tag: String)
 }
 
 protocol CharacterListDataManagerInputProtocol: AnyObject {

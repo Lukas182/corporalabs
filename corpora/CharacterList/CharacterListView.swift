@@ -61,6 +61,11 @@ extension CharacterListView: CharacterListViewProtocol {
     
     func updateFilters(filterApplied: String) {
         
+        let topRow = IndexPath(row: 0,
+                                   section: 0)
+                                   
+        self.collectionView.scrollToItem(at: topRow, at: .top, animated: false)
+        
         for tagview in self.filterView.tagViews{
             tagview.tagBackgroundColor = tagview.titleLabel?.text == filterApplied ? UIColor.lightGray : UIColor.white
         }
@@ -86,11 +91,9 @@ extension CharacterListView: CharacterListViewProtocol {
 // MARK: TAGVIEWLIST DELEGATE
 
 extension CharacterListView: TagListViewDelegate {
-    
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         self.presenter?.viewChangedFilter(tag: title)
     }
-    
 }
 
 
@@ -103,7 +106,6 @@ extension CharacterListView: UICollectionViewDelegateFlowLayout {
         
             return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
     }
-    
     func collectionView(_ collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -117,21 +119,17 @@ extension CharacterListView: UICollectionViewDelegateFlowLayout {
 extension CharacterListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if let count = self.presenter?.getCharacterCount() {
             return count
         }
-        
         return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CharacterListCell
-        
         if let modelRow = self.presenter?.getCharactersForIndexPath(index: indexPath.row) {
             cell.configureCell(model: modelRow)
         }
-       
         return cell
     }
     

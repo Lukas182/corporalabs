@@ -10,10 +10,6 @@ import Foundation
 
 class CharacterListPresenter  {
     
-    var info = Info()
-    var characters = [Result]()
-    var tagFiltering = ""
-    
     // MARK: Properties
     weak var view: CharacterListViewProtocol?
     var interactor: CharacterListInteractorInputProtocol?
@@ -26,73 +22,47 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
     // Presenter methods
     
     func viewDidLoad() {
-
         view?.setupCollection()
         view?.setupFilters()
         
         interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
-        
     }
     
     func viewNeedMoreCharacters(indexPath: Int) {
-   
-        let count = self.getCharacterCount()
-        if(count != 0)
-        {
-            if (indexPath == count - 1 ) {
-                interactor?.fetchCharacters(next: info.next,filter: nil,query: nil)
-            }
-        }
-        
+        interactor?.loadMoreCharacters(index: indexPath)
     }
     
     func viewChangedFilter(tag: String) {
-        
-        tagFiltering = tagFiltering == tag ? "" : tag
-        
-        self.view?.updateFilters(filterApplied: tagFiltering)
-        switch tagFiltering
-        {
-            case "Vivo": interactor?.fetchCharacters(next: nil,filter: "alive",query: "status")
-            break
-            case "Muerto": interactor?.fetchCharacters(next: nil,filter: "dead",query: "status")
-            break
-            case "Desconocido": interactor?.fetchCharacters(next: nil,filter: "unknown",query: "status")
-            break
-            case "Cualquiera": interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
-            break
-            default: interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
-        }
+        interactor?.filteringCharacters(tag: tag)
+        self.view?.updateData()
+        self.view?.updateFilters(filterApplied: interactor!.tagFiltering)
     }
     
     func viewDidSelectedCharacter(index: Int) {
-        self.wireFrame?.showDetail(fromView: view!, character: self.characters[index])
+        self.wireFrame?.showDetail(fromView: view!, character: (self.interactor?.characters[index])!)
     }
     
     // Getters from View
     
     func getCharacterCount() -> Int {
-        return self.characters.count
+        return (self.interactor?.characters.count)!
     }
     
-    func getCharactersForIndexPath(index: Int) -> Result {
-        return self.characters[index]
+    func getCharactersForIndexPath(index: Int) -> Result? {
+        if( (self.interactor?.characters.count)!>0)
+        {
+            if let _character = self.interactor?.characters[index]{
+                return _character
+            }
+        }
+        return nil
     }
     
 }
 
 extension CharacterListPresenter: CharacterListInteractorOutputProtocol {    
     
-    func fetchedCharactersSuccess(characters: CharacterResponse, newPage: Bool) {
-        if(newPage == true)
-        {
-            self.characters.append(contentsOf: characters.results)
-        }
-        else
-        {
-            self.characters = characters.results
-        }
-        self.info = characters.info
+    func fetchedCharactersSuccess(newPage: Bool) {
         self.view?.updateData()
     }
     

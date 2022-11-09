@@ -67,8 +67,6 @@ class NativeURLSessionNetworkService : NetWorkServiceProtocol {
             return
         }
         
-        print(url)
-        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         

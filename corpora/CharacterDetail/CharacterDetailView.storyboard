@@ -54,6 +54,9 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="SlU-pC-Uw2"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rg4-s6-5eu">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,9 +65,12 @@
                             <constraint firstItem="fTw-UK-cji" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="IrB-Uf-KWn"/>
                             <constraint firstItem="fTw-UK-cji" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ciy-Ks-5aB"/>
                             <constraint firstItem="fTw-UK-cji" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eSn-LM-HrY"/>
+                            <constraint firstItem="rg4-s6-5eu" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hJm-Up-LTr"/>
+                            <constraint firstItem="rg4-s6-5eu" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kpX-n1-aql"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityLoader" destination="rg4-s6-5eu" id="KZ2-w9-7Ii"/>
                         <outlet property="tableView" destination="fTw-UK-cji" id="3kq-Rt-e3l"/>
                     </connections>
                 </viewController>

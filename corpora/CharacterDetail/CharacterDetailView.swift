@@ -14,6 +14,7 @@ class CharacterDetailView: UIViewController {
     // MARK: Properties
     var presenter: CharacterDetailPresenterProtocol?
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
 
     // MARK: Lifecycle
@@ -29,6 +30,20 @@ extension CharacterDetailView: CharacterDetailViewProtocol {
     
     func setupView(title: String) {
         self.title = title
+    }
+    
+    func showLoader() {
+        DispatchQueue.main.async {
+            self.activityLoader.startAnimating()
+            self.activityLoader.isHidden = false
+        }
+    }
+    
+    func hideLoader() {
+        DispatchQueue.main.async {
+            self.activityLoader.stopAnimating()
+            self.activityLoader.isHidden = true
+        }
     }
     
     func updateData() {

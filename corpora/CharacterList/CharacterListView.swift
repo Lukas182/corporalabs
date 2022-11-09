@@ -14,6 +14,7 @@ class CharacterListView: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterView: TagListView!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     // MARK: Properties
     var presenter: CharacterListPresenterProtocol?
@@ -23,7 +24,6 @@ class CharacterListView: UIViewController {
         super.viewDidLoad()
         
         presenter?.viewDidLoad()
-        
         
     }
 }
@@ -57,6 +57,20 @@ extension CharacterListView: CharacterListViewProtocol {
         layout.minimumInteritemSpacing = 4
         
         self.collectionView.setCollectionViewLayout(layout, animated: true)
+    }
+    
+    func showLoader() {
+        DispatchQueue.main.async {
+            self.activityLoader.startAnimating()
+            self.activityLoader.isHidden = false
+        }
+    }
+    
+    func hideLoader() {
+        DispatchQueue.main.async {
+            self.activityLoader.stopAnimating()
+            self.activityLoader.isHidden = true
+        }
     }
     
     func updateFilters(filterApplied: String) {

@@ -147,10 +147,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GBZ-ZK-rVU">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="GBZ-ZK-rVU" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="47d-3I-kqf"/>
                             <constraint firstItem="F9u-YX-4Kl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5po-Hf-qGS"/>
                             <constraint firstItem="F9u-YX-4Kl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="CFv-YH-79b"/>
                             <constraint firstItem="F9u-YX-4Kl" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Lqp-A1-Ybe"/>
@@ -158,12 +162,14 @@
                             <constraint firstItem="F9u-YX-4Kl" firstAttribute="top" secondItem="XjJ-3u-9LQ" secondAttribute="bottom" id="Unh-IG-7ax"/>
                             <constraint firstItem="XjJ-3u-9LQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eY2-0U-4mM"/>
                             <constraint firstItem="XjJ-3u-9LQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hBQ-6V-l08"/>
+                            <constraint firstItem="GBZ-ZK-rVU" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="pvb-cc-mgM"/>
                             <constraint firstItem="XjJ-3u-9LQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="110" id="uoz-aB-ChX"/>
                             <constraint firstItem="F9u-YX-4Kl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yAD-Eb-KIY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o48-AA-kDG"/>
                     <connections>
+                        <outlet property="activityLoader" destination="GBZ-ZK-rVU" id="tL1-OA-vKM"/>
                         <outlet property="collectionView" destination="F9u-YX-4Kl" id="ERU-dT-Af2"/>
                         <outlet property="filterView" destination="XjJ-3u-9LQ" id="fi4-rh-0jq"/>
                     </connections>
@@ -191,6 +197,11 @@
             <point key="canvasLocation" x="128.98550724637681" y="97.767857142857139"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="XjJ-3u-9LQ">
+            <size key="intrinsicContentSize" width="414" height="22"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

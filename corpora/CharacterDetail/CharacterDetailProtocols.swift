@@ -16,6 +16,8 @@ protocol CharacterDetailViewProtocol: AnyObject {
     func setupView(title: String)
     func showError(error: Error)
     func updateData()
+    func showLoader()
+    func hideLoader()
     
 }
 

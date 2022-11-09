@@ -22,18 +22,19 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
     // Presenter methods
     
     func viewDidLoad() {
-        view?.setupCollection()
-        view?.setupFilters()
+        self.view?.setupCollection()
+        self.view?.setupFilters()
+        self.view?.showLoader()
         
-        interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
+        self.interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
     }
     
     func viewNeedMoreCharacters(indexPath: Int) {
-        interactor?.loadMoreCharacters(index: indexPath)
+        self.interactor?.loadMoreCharacters(index: indexPath)
     }
     
     func viewChangedFilter(tag: String) {
-        interactor?.filteringCharacters(tag: tag)
+        self.interactor?.filteringCharacters(tag: tag)
         self.view?.updateData()
         self.view?.updateFilters(filterApplied: interactor!.tagFiltering)
     }
@@ -63,10 +64,12 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
 extension CharacterListPresenter: CharacterListInteractorOutputProtocol {    
     
     func fetchedCharactersSuccess(newPage: Bool) {
+        self.view?.hideLoader()
         self.view?.updateData()
     }
     
     func fetchedCharactersFailure(error: Error) {
+        self.view?.hideLoader()
         self.view?.showError(error: error)
     }
     

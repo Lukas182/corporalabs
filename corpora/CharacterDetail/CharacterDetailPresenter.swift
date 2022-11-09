@@ -20,7 +20,8 @@ class CharacterDetailPresenter : CharacterDetailPresenterProtocol {
     func viewDidLoad() {
         
         if let _character = character {
-            view?.setupView(title: _character.name)
+            self.view?.setupView(title: _character.name)
+            self.view?.showLoader()
             self.interactor?.fetchEpisodesData(episodes: _character.episode)
         }
     }
@@ -45,10 +46,12 @@ class CharacterDetailPresenter : CharacterDetailPresenterProtocol {
 extension CharacterDetailPresenter: CharacterDetailInteractorOutputProtocol
 {
     func fetchedEpisodesSuccess() {
+        self.view?.hideLoader()
         self.view?.updateData()
     }
     
     func fetchedEpisodesFailure(error: Error) {
+        self.view?.hideLoader()
         self.view?.showError(error: error)
     }
 }

@@ -18,6 +18,8 @@ protocol CharacterListViewProtocol: AnyObject {
     func updateData()
     func showError(error: Error)
     func updateFilters(filterApplied: String)
+    func showLoader()
+    func hideLoader()
 }
 
 protocol CharacterListWireFrameProtocol: AnyObject {

@@ -48,9 +48,6 @@ extension CharacterListView: CharacterListViewProtocol {
     
     func setupCollection(){
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8

@@ -15,6 +15,15 @@ class CharacterListCell : UICollectionViewCell {
     @IBOutlet weak var origin: UILabel!
     @IBOutlet weak var status: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.img.layer.cornerRadius = 50
+        self.img.clipsToBounds = true
+        self.img.layer.borderWidth = 3.0
+        self.img.layer.borderColor = UIColor.white.cgColor
+    }
+    
     func configureCell(model: Result){
         
         self.backgroundColor = UIColor.lightGray
@@ -24,11 +33,6 @@ class CharacterListCell : UICollectionViewCell {
         self.status.text = model.status
         
         self.img.sd_setImage(with: URL.init(string: model.image), placeholderImage:nil)
-        
-        self.img.layer.cornerRadius = (self.img.frame.size.width ) / 2
-        self.img.clipsToBounds = true
-        self.img.layer.borderWidth = 3.0
-        self.img.layer.borderColor = UIColor.white.cgColor
         
     }
     

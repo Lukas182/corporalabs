@@ -10,7 +10,7 @@ import Foundation
 
 class CharacterListRemoteDataManager:CharacterListRemoteDataManagerInputProtocol {
 
-    var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol?
+    weak var remoteRequestHandler: CharacterListRemoteDataManagerOutputProtocol?
     
     func fetchCharactersFromService(next: String?,filter: String?,query: String?) {
         

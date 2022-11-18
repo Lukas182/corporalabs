@@ -17,4 +17,12 @@ class EpisodeCell : UITableViewCell {
         air_date.text = model.airDate
     }
     
+    override func prepareForReuse() {
+        
+        title.text = ""
+        air_date.text = ""
+        
+        super.prepareForReuse()
+    }
+    
 }

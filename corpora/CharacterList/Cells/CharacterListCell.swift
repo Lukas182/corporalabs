@@ -24,6 +24,16 @@ class CharacterListCell : UICollectionViewCell {
         self.img.layer.borderColor = UIColor.white.cgColor
     }
     
+    override func prepareForReuse() {
+        
+        self.img.image = nil
+        self.name.text = ""
+        self.origin.text = ""
+        self.status.text = ""
+        
+        super.prepareForReuse()
+    }
+    
     func configureCell(model: Result){
         
         self.backgroundColor = UIColor.lightGray

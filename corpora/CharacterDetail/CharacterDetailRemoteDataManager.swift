@@ -10,7 +10,7 @@ import Foundation
 
 class CharacterDetailRemoteDataManager:CharacterDetailRemoteDataManagerInputProtocol {
 
-    var remoteRequestHandler: CharacterDetailRemoteDataManagerOutputProtocol?
+    weak var remoteRequestHandler: CharacterDetailRemoteDataManagerOutputProtocol?
     
     func fetchEpisodiesFromService(episodes: [String]) {
         

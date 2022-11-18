@@ -72,9 +72,8 @@ extension CharacterListView: CharacterListViewProtocol {
     
     func updateFilters(filterApplied: String) {
         
-        let topRow = IndexPath(row: 0,
-                                   section: 0)
-                                   
+        let topRow = IndexPath(row: 0,section: 0)
+                  
         self.collectionView.scrollToItem(at: topRow, at: .top, animated: false)
         
         for tagview in self.filterView.tagViews{
@@ -84,17 +83,16 @@ extension CharacterListView: CharacterListViewProtocol {
     }
     
     func updateData() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async{
             self.collectionView.reloadData()
         }
     }
     
     func showError(error: Error) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Something Went Wrong :(", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: "Something Went Wrong :(", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }

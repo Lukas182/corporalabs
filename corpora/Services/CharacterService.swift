@@ -121,30 +121,73 @@ class NetWorkManager {
         
         let dispatchQueue = DispatchQueue(label: "callsQueue", qos: .background)
         
-        let semaphore = DispatchSemaphore(value: 0)
-        
         var episodes = [Episode]()
         
-        dispatchQueue.async {
+        // SYNC CODE
+        /*let semaphore = DispatchSemaphore(value: 0)
+        
+        if(urlEpisodes.count == 0)
+        {
+            completion(.failure(CustomError.noData))
+        }
+        else
+        {
+            dispatchQueue.async {
+                for url in urlEpisodes {
+                    self.webservice.getEpisode(url: url) { episode in
+                        switch episode{
+                        case .success(let _episode):
+                            episodes.append(_episode)
+                            semaphore.signal()
+                            break
+                        case .failure(let error):
+                            print(error)
+                            semaphore.signal()
+                            completion(.failure(error))
+                        }
+                    }
+                    semaphore.wait()
+                }
+                completion(.success(episodes))
+            }
+        }*/
+        
+        // CONCURRENT CODE
+        if(urlEpisodes.count == 0)
+        {
+            completion(.failure(CustomError.noData))
+        }
+        else
+        {
+            let group = DispatchGroup()
+            var failure = false
+            
             for url in urlEpisodes {
+                group.enter()
                 self.webservice.getEpisode(url: url) { episode in
                     switch episode{
                     case .success(let _episode):
                         episodes.append(_episode)
-                        semaphore.signal()
+                        group.leave()
                         break
                     case .failure(let error):
-                        semaphore.signal()
-                        completion(.failure(error))
+                        print("error retrieving episodes \(error.localizedDescription)");
+                        failure = true
+                        group.leave()
                     }
                 }
-                semaphore.wait()
             }
-            completion(.success(episodes))
+            group.notify(queue: dispatchQueue )
+            {
+                if(failure)
+                {
+                    completion(.failure(CustomError.failedRequest))
+                }
+                else
+                {
+                    completion(.success(episodes))
+                }
+            }
         }
-        
     }
-    
-    
-    
 }

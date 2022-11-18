@@ -22,11 +22,13 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
     // Presenter methods
     
     func viewDidLoad() {
-        self.view?.setupCollection()
-        self.view?.setupFilters()
-        self.view?.showLoader()
+        DispatchQueue.main.async {
+            self.view?.setupCollection()
+            self.view?.setupFilters()
+            self.view?.showLoader()
         
-        self.interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
+            self.interactor?.fetchCharacters(next: nil,filter: nil,query: nil)
+        }
     }
     
     func viewNeedMoreCharacters(indexPath: Int) {
@@ -36,7 +38,7 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
     func viewChangedFilter(tag: String) {
         self.interactor?.filteringCharacters(tag: tag)
         self.view?.updateData()
-        self.view?.updateFilters(filterApplied: interactor!.tagFiltering)
+        self.view?.updateFilters(filterApplied: self.interactor!.tagFiltering)
     }
     
     func viewDidSelectedCharacter(index: Int) {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F00A4F3292031D2007E94E2 /* MockFile.json in Sources */ = {isa = PBXBuildFile; fileRef = 0F00A4F2292031D2007E94E2 /* MockFile.json */; };
+		0F00A4F5292035A0007E94E2 /* MockFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F00A4F2292031D2007E94E2 /* MockFile.json */; };
 		0FF2223D29159BB9009F93B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2223C29159BB9009F93B6 /* AppDelegate.swift */; };
 		0FF2223F29159BB9009F93B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2223E29159BB9009F93B6 /* SceneDelegate.swift */; };
 		0FF2224129159BB9009F93B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2224029159BB9009F93B6 /* ViewController.swift */; };
@@ -63,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F00A4F2292031D2007E94E2 /* MockFile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockFile.json; sourceTree = "<group>"; };
 		0FF2223929159BB9009F93B6 /* corpora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = corpora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF2223C29159BB9009F93B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FF2223E29159BB9009F93B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F00A4F429203204007E94E2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0F00A4F2292031D2007E94E2 /* MockFile.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		0FF2223029159BB9009F93B6 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +187,7 @@
 				0FF2224A29159BBB009F93B6 /* Info.plist */,
 				0FF2227A29159C2F009F93B6 /* CharacterList */,
 				0FF2229D2919147F009F93B6 /* CharacterDetail */,
+				0F00A4F429203204007E94E2 /* Mocks */,
 			);
 			path = corpora;
 			sourceTree = "<group>";
@@ -407,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F00A4F5292035A0007E94E2 /* MockFile.json in Resources */,
 				0FF2227C29159C4E009F93B6 /* CharacterListView.storyboard in Resources */,
 				0FF2224929159BBB009F93B6 /* LaunchScreen.storyboard in Resources */,
 				0FF2224629159BBB009F93B6 /* Assets.xcassets in Resources */,
@@ -564,6 +577,7 @@
 				0FF2227729159C24009F93B6 /* CharacterListView.swift in Sources */,
 				0FF2227929159C24009F93B6 /* CharacterListWireFrame.swift in Sources */,
 				0FF2223F29159BB9009F93B6 /* SceneDelegate.swift in Sources */,
+				0F00A4F3292031D2007E94E2 /* MockFile.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

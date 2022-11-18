@@ -25,7 +25,7 @@ Prueba Técnica
 
 ##  :bug: Known Bugs 
 
-+ The collectionview to show the character list throw several layout errors
++ The collectionview to show the character list throw several layout errors [FIXED]
 
 ##  :zombie: Author
 

@@ -31,6 +31,7 @@ class CharacterDetailInteractor: CharacterDetailInteractorInputProtocol {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM dd, yyyy"
+        dateFormatter.locale = .init(identifier: "en_US")
         let _date = dateFormatter.date(from: date)
         let localFormatter = DateFormatter()
         localFormatter.dateStyle = .long

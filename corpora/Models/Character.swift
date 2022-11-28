@@ -8,8 +8,8 @@
 import Foundation
 
 struct CharacterResponse: Codable {
-    let info: Info
-    let results: [Result]
+    var info: Info
+    var results: [Result]
 }
 
 // MARK: - Info

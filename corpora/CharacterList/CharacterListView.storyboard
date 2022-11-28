@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Character List View-->
+        <!--Character ListMVVM View-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CharacterListView" customModule="corpora" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="CharacterListMVVMView" customModule="corpora" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,9 +163,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="o48-AA-kDG"/>
                     <connections>
-                        <outlet property="activityLoader" destination="GBZ-ZK-rVU" id="tL1-OA-vKM"/>
+                        <outlet property="activityLoader" destination="GBZ-ZK-rVU" id="ZUA-bs-5TR"/>
                         <outlet property="collectionView" destination="F9u-YX-4Kl" id="ERU-dT-Af2"/>
-                        <outlet property="filterView" destination="XjJ-3u-9LQ" id="fi4-rh-0jq"/>
+                        <outlet property="filterView" destination="XjJ-3u-9LQ" id="Jku-Mx-z0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -175,6 +175,7 @@
         <!--Navigation Controller-->
         <scene sceneID="1Es-hY-dRK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZP-BH-hmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="CharacterListView" automaticallyAdjustsScrollViewInsets="NO" id="BdR-a9-zZM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qK6-sW-EdC">
@@ -186,7 +187,6 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="mga-gI-8xv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZP-BH-hmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128.98550724637681" y="97.767857142857139"/>
         </scene>

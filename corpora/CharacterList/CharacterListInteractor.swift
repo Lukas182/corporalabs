@@ -20,30 +20,43 @@ class CharacterListInteractor: CharacterListInteractorInputProtocol {
     var characters: [Result] = [Result]()
     var tagFiltering = ""
     
+    var loading = false // Take care of multiple calls due low connectivity issue
+    
     func fetchCharacters(next: Bool?,filter: String?, query: String?) {
-        remoteDatamanager?.fetchCharactersFromService(next: nil,filter: filter, query: query)
+        if(loading == false)
+        {
+            loading = true
+            remoteDatamanager?.fetchCharactersFromService(next: nil,filter: filter, query: query)
+        }
     }
     
     func filteringCharacters(tag: String) {
         
-        characters.removeAll()
-        info = nil
-        
-        tagFiltering = tagFiltering == tag ? "" : tag
-        
-        switch tagFiltering
+        if(loading == false)
         {
-            case "Vivo":
-                remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "alive", query: "status")
-            break
-            case "Muerto":
-                remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "dead", query: "status")
-            break
-            case "Desconocido":
-                remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "unknown", query: "status")
-            break
-            default:
-                remoteDatamanager?.fetchCharactersFromService(next: nil,filter: nil, query: nil)
+            
+            loading = true
+            
+            characters.removeAll()
+            info = nil
+            
+            tagFiltering = tagFiltering == tag ? "" : tag
+            
+            switch tagFiltering
+            {
+                case "Vivo":
+                    remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "alive", query: "status")
+                break
+                case "Muerto":
+                    remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "dead", query: "status")
+                break
+                case "Desconocido":
+                    remoteDatamanager?.fetchCharactersFromService(next: nil,filter: "unknown", query: "status")
+                break
+                default:
+                    remoteDatamanager?.fetchCharactersFromService(next: nil,filter: nil, query: nil)
+            }
+        
         }
     }
     
@@ -52,7 +65,12 @@ class CharacterListInteractor: CharacterListInteractorInputProtocol {
         if(count != 0)
         {
             if (index == count - 1 ) {
-                remoteDatamanager?.fetchCharactersFromService(next: info?.next,filter: nil, query: nil)
+                if(loading == false)
+                {
+                    loading = true
+                    
+                    remoteDatamanager?.fetchCharactersFromService(next: info?.next,filter: nil, query: nil)
+                }
             }
         }
     }
@@ -70,9 +88,11 @@ extension CharacterListInteractor: CharacterListRemoteDataManagerOutputProtocol 
             {
                 self.characters = charactersResponse.results
             }
+            loading = false
             self.info = charactersResponse.info
             presenter?.fetchedCharactersSuccess(newPage: newPage)
         case .failure(let error):
+            loading = false
             presenter?.fetchedCharactersFailure(error: error)
         }
     }

@@ -56,7 +56,9 @@ class NativeURLSessionNetworkService : NetWorkServiceProtocol {
     
     func getCharacters(next: String? , filter: String?, query: String?, completion: @escaping (Swift.Result<CharacterResponse, Error>) -> Void ) {
         
-        var url = next != nil ? next! : EndPoint.characters.url
+        //var url = next != nil ? next! : EndPoint.characters.url
+        
+        var url = next ?? EndPoint.characters.url
         
         if let _query = query,let _filter = filter {
             url = url.appending("?").appending(_query).appending("=").appending(_filter)
